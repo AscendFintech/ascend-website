@@ -41,8 +41,6 @@ function App() {
         return <About />;
       case 'services':
         return <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />;
-      case 'team':
-        return <Team />;
       case 'careers':
         return <Careers />;
       default:
