@@ -8,6 +8,7 @@ import Team from './components/Team';
 import Testimonials from './components/Testimonials';
 import FrappeEcosystem from './components/FrappeEcosystem';
 import FAQ from './components/FAQ';
+import CaseStudies from './components/CaseStudies';
 import Careers from './components/Careers';
 import Footer from './components/Footer';
 import RFQModal from './components/RFQModal';
@@ -54,6 +55,8 @@ function App() {
         return <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />;
       case 'team':
         return <Team />;
+      case 'case-studies':
+        return <CaseStudies />;
       case 'careers':
         return <Careers />;
       default:

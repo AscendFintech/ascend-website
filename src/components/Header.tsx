@@ -23,6 +23,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
+    { id: 'case-studies', label: 'Case Studies' },
     { id: 'careers', label: 'Careers' },
   ];
 
@@ -85,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
         {/* Mobile Menu */}
         <div
           className={`md:hidden transition-all duration-300 overflow-hidden ${
-            isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <nav className="py-4 space-y-2">

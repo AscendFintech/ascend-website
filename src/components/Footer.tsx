@@ -34,6 +34,7 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
                 { id: 'home', label: 'Home' },
                 { id: 'about', label: 'About' },
                 { id: 'services', label: 'Services' },
+                { id: 'case-studies', label: 'Case Studies' },
                 { id: 'team', label: 'Our Team' },
                 { id: 'careers', label: 'Careers' },
               ].map((link) => (
