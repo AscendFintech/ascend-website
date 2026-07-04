@@ -93,8 +93,8 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-gold-400 flex-shrink-0" size={16} />
-                <a href="mailto:info@ascendfntech.com" className="text-stone-400 hover:text-gold-400 transition-colors">
-                  info@ascendfntech.com
+                <a href="mailto:info@ascendfintech.com" className="text-stone-400 hover:text-gold-400 transition-colors">
+                  info@ascendfintech.com
                 </a>
               </div>
             </div>

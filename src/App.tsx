@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,6 +7,7 @@ import Services from './components/Services';
 import Team from './components/Team';
 import Testimonials from './components/Testimonials';
 import FrappeEcosystem from './components/FrappeEcosystem';
+import FAQ from './components/FAQ';
 import Careers from './components/Careers';
 import Footer from './components/Footer';
 import RFQModal from './components/RFQModal';
@@ -43,6 +44,7 @@ function App() {
             <Hero onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
             <FrappeEcosystem />
             <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
+            <FAQ />
             <Testimonials />
           </>
         );
@@ -50,6 +52,8 @@ function App() {
         return <About />;
       case 'services':
         return <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />;
+      case 'team':
+        return <Team />;
       case 'careers':
         return <Careers />;
       default:
@@ -58,6 +62,7 @@ function App() {
             <Hero onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
             <FrappeEcosystem />
             <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
+            <FAQ />
             <Testimonials />
           </>
         );

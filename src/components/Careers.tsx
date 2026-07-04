@@ -91,7 +91,7 @@ const Careers: React.FC = () => {
               We're always looking for talented individuals to join our growing team.
             </p>
             <a
-              href="mailto:info@ascendfntech.com"
+              href="mailto:info@ascendfintech.com"
               className="inline-block bg-ink-950 text-gold-400 px-8 py-3 rounded-full font-semibold hover:bg-ink-900 transition-colors"
             >
               Send Us Your Resume

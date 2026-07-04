@@ -17,6 +17,18 @@ const PackageRequestModal: React.FC<PackageRequestModalProps> = ({ isOpen, onClo
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const buildMailtoLink = () => {
+    const subject = `${packageType} Request`;
+    const body = [
+      `Package: ${packageType}`,
+      `Contact Name: ${formData.contactName}`,
+      `Email: ${formData.email}`,
+      `Company Name: ${formData.companyName}`,
+      `Contact Number: ${formData.contactNumber}`,
+    ].join('\n');
+    return `mailto:info@ascendfintech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -30,9 +42,11 @@ const PackageRequestModal: React.FC<PackageRequestModalProps> = ({ isOpen, onClo
       });
       localStorage.setItem('packageRequests', JSON.stringify(existingData));
 
+      window.location.href = buildMailtoLink();
+
       setIsSubmitted(true);
       setIsSubmitting(false);
-    }, 1000);
+    }, 800);
   };
 
   const handleClose = () => {
@@ -154,6 +168,14 @@ const PackageRequestModal: React.FC<PackageRequestModalProps> = ({ isOpen, onClo
                   <span>Quick implementation start</span>
                 </p>
               </div>
+
+              <p className="text-stone-400 mt-4 text-sm">
+                Your email client should have opened with your details pre-filled. If it didn't,
+                email us directly at{' '}
+                <a href="mailto:info@ascendfintech.com" className="text-gold-400 hover:underline">
+                  info@ascendfintech.com
+                </a>.
+              </p>
 
               <p className="text-stone-400 mt-4 text-sm">
                 No obligations, no pressure - just expert guidance to help you make the right decision for your business.

@@ -21,20 +21,6 @@ const Team: React.FC = () => {
       expertise: 'Chief Sales Officer',
       image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
       description: '5+ Years Experience in Sales & Marketing'
-    },
-    {
-      name: 'Partner',
-      role: 'Managing Partner',
-      expertise: 'Audit & Accounting Specialist',
-      image: 'https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=400',
-      description: '7+ Years Experience in Audit & Accounting'
-    },
-    {
-      name: 'Developer',
-      role: 'ERP Stack Developer',
-      expertise: 'Development & Server Management',
-      image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=400',
-      description: '8+ Years Experience in development and server'
     }
   ];
 
@@ -55,7 +41,7 @@ const Team: React.FC = () => {
           </Reveal>
         </div>
 
-        <StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16" stagger={0.1}>
+        <StaggerGroup className="grid md:grid-cols-2 gap-8 mb-16 max-w-3xl mx-auto" stagger={0.1}>
           {teamMembers.map((member) => (
             <StaggerItem key={member.name}>
               <SpotlightCard className="p-6 h-full">

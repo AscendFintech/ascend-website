@@ -1,0 +1,16 @@
+{
+  "name": "Ascend Fintech LLC",
+  "short_name": "Ascend Fintech",
+  "description": "Smart accounting, seamless ERP — ERPNext and Frappe implementation, support, and accounting services.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#14110d",
+  "background_color": "#14110d",
+  "display": "standalone",
+  "start_url": "/"
+}
