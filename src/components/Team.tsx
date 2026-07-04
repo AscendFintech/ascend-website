@@ -1,5 +1,10 @@
 import React from 'react';
-import { Users, Award, BookOpen } from 'lucide-react';
+import { Users, Trophy, BookOpen } from 'lucide-react';
+import Reveal from './motion/Reveal';
+import { StaggerGroup, StaggerItem } from './motion/Stagger';
+import Counter from './motion/Counter';
+import SpotlightCard from './motion/SpotlightCard';
+import IconBadge from './motion/IconBadge';
 
 const Team: React.FC = () => {
   const teamMembers = [
@@ -34,66 +39,87 @@ const Team: React.FC = () => {
   ];
 
   return (
-    <section className="pt-24 pb-20 bg-gradient-to-b from-sky-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up mt-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-sky-900 mb-6">
-            Our Expert Team
-          </h2>
-          <p className="text-xl text-sky-700 max-w-3xl mx-auto">
-            Meet the professionals dedicated to your business success
-          </p>
+    <section className="relative pt-24 pb-20 bg-ink-950 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_0%,rgba(212,160,76,0.07),transparent)]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 mt-8">
+          <Reveal>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Our Expert <span className="text-accent">Team</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-xl text-stone-400 max-w-3xl mx-auto">
+              Meet the professionals dedicated to your business success
+            </p>
+          </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-sky-100 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-center">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover shadow-lg"
-                />
-                <h3 className="text-xl font-bold text-sky-800 mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-sky-600 font-semibold mb-2">
-                  {member.role}
-                </p>
-                <p className="text-sm text-sky-500 mb-3 font-medium">
-                  {member.expertise}
-                </p>
-                <p className="text-sm text-sky-600 leading-relaxed">
-                  {member.description}
-                </p>
-              </div>
-            </div>
+        <StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16" stagger={0.1}>
+          {teamMembers.map((member) => (
+            <StaggerItem key={member.name}>
+              <SpotlightCard className="p-6 h-full">
+                <div className="text-center">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-2 ring-white/10"
+                  />
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-stone-200 font-semibold mb-2">
+                    {member.role}
+                  </p>
+                  <p className="text-sm text-gold-400 mb-3 font-medium uppercase tracking-wide">
+                    {member.expertise}
+                  </p>
+                  <p className="text-sm text-stone-400 leading-relaxed">
+                    {member.description}
+                  </p>
+                </div>
+              </SpotlightCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sky-100">
-            <Users className="text-sky-500 mx-auto mb-4" size={48} />
-            <h3 className="text-2xl font-bold text-sky-800 mb-2">15+</h3>
-            <p className="text-sky-600">Successful Implementations</p>
-          </div>
+        <StaggerGroup className="grid md:grid-cols-3 gap-8" stagger={0.15}>
+          <StaggerItem>
+            <div className="text-center glow-border bg-white/[0.03] backdrop-blur-md rounded-2xl p-8 h-full">
+              <IconBadge size="lg" className="mx-auto mb-4">
+                <Users className="text-gold-400" size={26} strokeWidth={1.75} />
+              </IconBadge>
+              <h3 className="text-3xl font-bold text-accent mb-2">
+                <Counter to={15} suffix="+" />
+              </h3>
+              <p className="text-stone-400">Successful Implementations</p>
+            </div>
+          </StaggerItem>
 
-          <div className="text-center bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sky-100">
-            <Award className="text-sky-500 mx-auto mb-4" size={48} />
-            <h3 className="text-2xl font-bold text-sky-800 mb-2">15+</h3>
-            <p className="text-sky-600">Years Combined Experience</p>
-          </div>
+          <StaggerItem>
+            <div className="text-center glow-border bg-white/[0.03] backdrop-blur-md rounded-2xl p-8 h-full">
+              <IconBadge size="lg" className="mx-auto mb-4">
+                <Trophy className="text-gold-400" size={26} strokeWidth={1.75} />
+              </IconBadge>
+              <h3 className="text-3xl font-bold text-accent mb-2">
+                <Counter to={15} suffix="+" />
+              </h3>
+              <p className="text-stone-400">Years Combined Experience</p>
+            </div>
+          </StaggerItem>
 
-          <div className="text-center bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-sky-100">
-            <BookOpen className="text-sky-500 mx-auto mb-4" size={48} />
-            <h3 className="text-2xl font-bold text-sky-800 mb-2">50+</h3>
-            <p className="text-sky-600">Training Sessions Delivered</p>
-          </div>
-        </div>
+          <StaggerItem>
+            <div className="text-center glow-border bg-white/[0.03] backdrop-blur-md rounded-2xl p-8 h-full">
+              <IconBadge size="lg" className="mx-auto mb-4">
+                <BookOpen className="text-gold-400" size={26} strokeWidth={1.75} />
+              </IconBadge>
+              <h3 className="text-3xl font-bold text-accent mb-2">
+                <Counter to={50} suffix="+" />
+              </h3>
+              <p className="text-stone-400">Training Sessions Delivered</p>
+            </div>
+          </StaggerItem>
+        </StaggerGroup>
       </div>
     </section>
   );

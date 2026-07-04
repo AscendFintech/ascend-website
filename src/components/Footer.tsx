@@ -9,16 +9,18 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
   return (
-    <footer className="bg-gradient-to-br from-sky-900 to-blue-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="relative bg-ink-950 text-white overflow-hidden">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-gold-500/50 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_0%,rgba(212,160,76,0.06),transparent)]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">Ascend Fintech LLC</h3>
-            <p className="text-sky-100 mb-4 font-light">
+            <h3 className="text-2xl font-bold mb-4 text-accent">Ascend Fintech LLC</h3>
+            <p className="text-stone-300 mb-4 font-light">
               Smart accounting, Seamless ERP
             </p>
-            <p className="text-sky-200 leading-relaxed">
+            <p className="text-stone-400 leading-relaxed">
               Empowering businesses through digital transformation and
               comprehensive financial solutions.
             </p>
@@ -26,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2">
               {[
                 { id: 'home', label: 'Home' },
@@ -38,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
                 <li key={link.id}>
                   <button
                     onClick={() => onSectionChange(link.id)}
-                    className="text-sky-200 hover:text-white transition-colors"
+                    className="text-stone-400 hover:text-gold-400 transition-colors"
                   >
                     {link.label}
                   </button>
@@ -49,12 +51,12 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
 
           {/* Request Quote */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Request Quote</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Request Quote</h4>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => onPackageClick('ERP Services')}
-                  className="text-sky-200 hover:text-white transition-colors"
+                  className="text-stone-400 hover:text-gold-400 transition-colors"
                 >
                   ERP Services
                 </button>
@@ -62,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
               <li>
                 <button
                   onClick={() => onPackageClick('Accounting Services')}
-                  className="text-sky-200 hover:text-white transition-colors"
+                  className="text-stone-400 hover:text-gold-400 transition-colors"
                 >
                   Accounting Services
                 </button>
@@ -72,26 +74,26 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <MapPin className="text-sky-300 flex-shrink-0 mt-1" size={16} />
-                <span className="text-sky-200">
+                <MapPin className="text-gold-400 flex-shrink-0 mt-1" size={16} />
+                <span className="text-stone-400">
                   SHAMS, Al Messaned,<br />
                   Al Bataeh, Sharjah<br />
                   United Arab Emirates
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="text-sky-300 flex-shrink-0" size={16} />
-                <div className="text-sky-200">
+                <Phone className="text-gold-400 flex-shrink-0" size={16} />
+                <div className="text-stone-400">
                   <div>+971 565605017</div>
                   <div>+971 544589936</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="text-sky-300 flex-shrink-0" size={16} />
-                <a href="mailto:info@ascendfntech.com" className="text-sky-200 hover:text-white transition-colors">
+                <Mail className="text-gold-400 flex-shrink-0" size={16} />
+                <a href="mailto:info@ascendfntech.com" className="text-stone-400 hover:text-gold-400 transition-colors">
                   info@ascendfntech.com
                 </a>
               </div>
@@ -99,18 +101,18 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
 
             {/* Social Media */}
             <div className="mt-6">
-              <h5 className="text-sm font-semibold mb-3">Follow Us</h5>
+              <h5 className="text-sm font-semibold mb-3 text-white">Follow Us</h5>
               <div className="flex space-x-3">
-                <a href="#" className="text-sky-300 hover:text-white transition-colors p-2 rounded-full hover:bg-sky-800">
+                <a href="#" className="text-stone-400 hover:text-white transition-colors p-2 rounded-full border border-white/10 hover:border-gold-400/50 hover:bg-white/5">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" className="text-sky-300 hover:text-white transition-colors p-2 rounded-full hover:bg-sky-800">
+                <a href="#" className="text-stone-400 hover:text-white transition-colors p-2 rounded-full border border-white/10 hover:border-gold-400/50 hover:bg-white/5">
                   <Twitter size={20} />
                 </a>
-                <a href="#" className="text-sky-300 hover:text-white transition-colors p-2 rounded-full hover:bg-sky-800">
+                <a href="#" className="text-stone-400 hover:text-white transition-colors p-2 rounded-full border border-white/10 hover:border-gold-400/50 hover:bg-white/5">
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="text-sky-300 hover:text-white transition-colors p-2 rounded-full hover:bg-sky-800">
+                <a href="#" className="text-stone-400 hover:text-white transition-colors p-2 rounded-full border border-white/10 hover:border-gold-400/50 hover:bg-white/5">
                   <Instagram size={20} />
                 </a>
               </div>
@@ -118,8 +120,8 @@ const Footer: React.FC<FooterProps> = ({ onSectionChange, onPackageClick }) => {
           </div>
         </div>
 
-        <div className="border-t border-sky-700 mt-12 pt-8 text-center">
-          <p className="text-sky-200">
+        <div className="border-t border-white/10 mt-12 pt-8 text-center">
+          <p className="text-stone-500">
             &copy; 2025 Ascend Fintech LLC. All rights reserved.
           </p>
         </div>

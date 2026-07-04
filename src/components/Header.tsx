@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 interface HeaderProps {
@@ -29,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-lg'
+          ? 'bg-ink-950/70 backdrop-blur-xl border-b border-white/5 shadow-[0_1px_0_rgba(255,255,255,0.05)]'
           : 'bg-transparent'
       }`}
     >
@@ -37,37 +38,44 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div
-            className="flex flex-col cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            className="flex flex-col cursor-pointer group"
             onClick={() => onSectionChange('home')}
           >
-            <h1 className="text-2xl md:text-3xl font-bold text-sky-800">
-              Ascend Fintech LLC
+            <h1 className="text-2xl md:text-3xl font-bold text-accent tracking-tight group-hover:brightness-125 transition-[filter]">
+              Ascend Fintech
             </h1>
-            <p className="text-sm font-light">
-              <span className="text-black">Smart accounting, Seamless ERP</span>
+            <p className="text-xs font-medium tracking-wide text-stone-400">
+              Smart accounting, seamless ERP
             </p>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md p-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => onSectionChange(item.id)}
-                className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
+                className={`relative px-4 py-2 rounded-full font-medium text-sm transition-colors duration-300 ${
                   activeSection === item.id
-                    ? 'text-white bg-sky-500 shadow-lg'
-                    : 'text-sky-700 hover:text-sky-900 hover:bg-sky-50'
+                    ? 'text-ink-950'
+                    : 'text-stone-400 hover:text-white'
                 }`}
               >
-                {item.label}
+                {activeSection === item.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-gold-300 shadow-glow-sm"
+                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                  />
+                )}
+                <span className="relative z-10">{item.label}</span>
               </button>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg text-sky-700 hover:bg-sky-50 transition-colors"
+            className="md:hidden p-2 rounded-lg text-stone-300 hover:text-white hover:bg-white/5 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,8 +98,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
                 }}
                 className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeSection === item.id
-                    ? 'text-white bg-sky-500 shadow-lg'
-                    : 'text-sky-700 hover:text-sky-900 hover:bg-sky-50'
+                    ? 'text-ink-950 bg-gold-300 shadow-glow-sm'
+                    : 'text-stone-400 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {item.label}

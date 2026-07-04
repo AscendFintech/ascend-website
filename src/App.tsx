@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Team from './components/Team';
 import Testimonials from './components/Testimonials';
+import FrappeEcosystem from './components/FrappeEcosystem';
 import Careers from './components/Careers';
 import Footer from './components/Footer';
 import RFQModal from './components/RFQModal';
 import PackageRequestModal from './components/PackageRequestModal';
+import ScrollProgress from './components/motion/ScrollProgress';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -27,12 +30,18 @@ function App() {
     setIsPackageModalOpen(true);
   };
 
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
         return (
           <>
             <Hero onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
+            <FrappeEcosystem />
             <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
             <Testimonials />
           </>
@@ -47,6 +56,7 @@ function App() {
         return (
           <>
             <Hero onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
+            <FrappeEcosystem />
             <Services onRFQClick={handleRFQClick} onPackageClick={handlePackageClick} />
             <Testimonials />
           </>
@@ -55,15 +65,27 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header activeSection={activeSection} onSectionChange={setActiveSection} />
+    <div className="min-h-screen bg-ink-950">
+      <div className="grain-overlay" />
+      <ScrollProgress />
+      <Header activeSection={activeSection} onSectionChange={handleSectionChange} />
 
       <main>
-        {renderSection()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSection}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {renderSection()}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       <Footer
-        onSectionChange={setActiveSection}
+        onSectionChange={handleSectionChange}
         onRFQClick={handleRFQClick}
         onPackageClick={handlePackageClick}
       />
