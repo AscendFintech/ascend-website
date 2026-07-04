@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
 import { StaggerGroup, StaggerItem } from './motion/Stagger';
 
 interface HeroProps {
@@ -161,6 +161,18 @@ const Hero: React.FC<HeroProps> = ({ onPackageClick }) => {
               Request Accounting Quote
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
             </motion.button>
+
+            <motion.a
+              href="https://deploy.ascendfintech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="group text-gold-400 hover:text-gold-300 px-8 py-4 rounded-full font-semibold text-lg transition-colors duration-300 flex items-center justify-center gap-2"
+            >
+              Try Demo
+              <ExternalLink className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" size={18} />
+            </motion.a>
           </motion.div>
         </div>
       </motion.div>
